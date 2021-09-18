@@ -33,7 +33,9 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "@stable"
+    "phpunit/phpunit": "@stable",
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "dev-master"
   },
   "autoload-dev": {
     "files": [
@@ -44,5 +46,9 @@
       "DCarbone\\PHPConsulAPI\\": "src/",
       "DCarbone\\PHPConsulAPITests\\": "tests/"
     }
+  },
+  "scripts": {
+    "build-docker-dev": "docker buildx build -f docker/dev.Dockerfile -t dancarbone/php-consul-api-dev:7.4 --push .",
+    "php-cs-fixer": "vendor/bin/php-cs-fixer fix --config tools/php-cs-fixer/more-different-psr12.php_cs src/"
   }
 }
